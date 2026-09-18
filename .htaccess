@@ -1,13 +1,12 @@
+# Claireshine — SPA fallback for Hostinger (Apache/LiteSpeed).
+# Client-side routes like /about or /services have no matching file on the
+# server, so without this, a direct visit or refresh on those URLs 404s.
+# This rewrites any request that isn't a real file/directory back to
+# index.html, letting react-router take over and render the right page.
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  
-  # Allow direct access to existing files and directories (assets, images, etc.)
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule ^ - [L]
-
-  # Send everything else to index.html for React Router
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
 </IfModule>

@@ -1,6 +1,0 @@
-# react-app/ is the buildable source for this site. It's kept out of this
-# repo intentionally, matching the "clean production build at root" layout
-# (see commit "Deploy clean production build to root") — only the compiled
-# index.html/assets/.htaccess are tracked here. The source lives with the
-# person maintaining the site (see the react-app-source-backup.zip handoff).
-react-app/
